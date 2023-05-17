@@ -3,13 +3,9 @@
 async function getWeather(city){
     try{
         // make api request
+        curr = city;
         let cityData =  await (await fetch(`https://api.weatherapi.com/v1/current.json?key=a42d86fe8fbf4c39add190104231605&q=${city}`, {mode: 'cors'})).json();
         console.log(cityData);
-        let convert = document.getElementById("convert");
-        convert.addEventListener("click", function(event){
-            is_f = !is_f;
-            displayWeather(cityData);
-        });
         displayWeather(cityData);
     } catch(error) {
         console.log(error);
@@ -48,9 +44,16 @@ function displayWeather(data){
 }
 
 is_f = true;
+curr = null;
 getWeather("London");
 let searchImg = document.getElementById("searchImg");
 let search = document.getElementById("search");
+
+let convert = document.getElementById("convert");
+convert.addEventListener("click", function(event){
+    is_f = !is_f;
+    getWeather(curr);
+});
 searchImg.addEventListener("click", (e) => getWeather(search.value));
 search.addEventListener("keypress", function(event) {
     if (event.key === "Enter") getWeather(search.value);
