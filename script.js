@@ -22,6 +22,7 @@ function displayWeather(data){
     let wind = document.getElementById("wind");
     let feel = document.getElementById("feel");
     let humidity = document.getElementById("humidity");
+    let convert = document.getElementById("convert");
 
     locat.innerText = data.location.name + ", " + data.location.country;
 
@@ -34,10 +35,12 @@ function displayWeather(data){
         wind.innerText = "Wind speed: " + data.current.wind_mph + " MPH";
         temp.innerText = Math.round(data.current.temp_f) + "°F";
         feel.innerText = "Feels like: " + Math.round(data.current.feelslike_f) + "°F";
+        convert.innerText = "Metric Units";
     } else {
         wind.innerText = "Wind speed: " + data.current.wind_kph + " KPH";
         temp.innerText = Math.round(data.current.temp_c) + "°C";
         feel.innerText = "Feels like: " + Math.round(data.current.feelslike_c) + "°C";
+        convert.innerText = "Imperial Units";
     }
     
 
