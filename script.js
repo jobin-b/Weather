@@ -2,7 +2,7 @@
 
 async function getWeather(city){
     try{
-        let cityData =  await (await fetch(`http://api.weatherapi.com/v1/current.json?key=a42d86fe8fbf4c39add190104231605&q=${city}`, {mode: 'cors'})).json();
+        let cityData =  await (await fetch(`https://api.weatherapi.com/v1/current.json?key=a42d86fe8fbf4c39add190104231605&q=${city}`, {mode: 'cors'})).json();
         console.log(cityData);
         let convert = document.getElementById("convert");
         convert.addEventListener("click", function(event){
